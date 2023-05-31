@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool _facingRight = true;
     private int respawnCount = 0;
     public int maxRespawns = 3;
+    public ReaparicionesIndicador reaparicionesIndicador;
     public LifeIndicator lifeIndicator;
     private bool isGrounded; // indica si el jugador está tocando el suelo
     private int airJumpsLeft = 1; // cantidad de saltos en el aire que quedan
@@ -202,11 +203,13 @@ public class PlayerController : MonoBehaviour
             return;
         }
     }
+
     void FixedUpdate()
     {
         float horizontalVelocity = _movement.normalized.x * speed;
         rb.velocity = new Vector2(horizontalVelocity, rb.velocity.y);
     }
+
     private void Flip()
     {
         _facingRight = !_facingRight;
@@ -214,6 +217,7 @@ public class PlayerController : MonoBehaviour
         localScaleX = localScaleX * -1f;
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
     }
+
     void LateUpdate()
     {
         _animator.SetBool("Idle", _movement == Vector2.zero);
@@ -221,6 +225,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("IsCrouching", isCrouching);
         _animator.SetBool("IsSprinting", isSprinting);
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         // verifica si el jugador está tocando el suelo
@@ -228,7 +233,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             airJumpsLeft = 1;
-          
+
         }
     }
 
@@ -271,14 +276,16 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(invulnerabilityTime);
         spriteRenderer.color = Color.white;
     }
-   
+
     void Respawn()
     {
         respawnCount++;
-        health = 4; // Restablecer la salud al máximo al reaparecer
+        health = maxHealth; // Restablecer la salud al máximo al reaparecer
         lifeIndicator.UpdateLife(health, maxHealth);
-         transform.position = respawnPosition;
+        reaparicionesIndicador.ActualizarReaparicionesRestantes(maxRespawns - respawnCount);
+        transform.position = respawnPosition;   
     }
+
     public void SetCheckpoint(Vector3 checkpointPosition)
     {
         respawnPosition = checkpointPosition;
@@ -289,6 +296,7 @@ public class PlayerController : MonoBehaviour
     {
         respawnPosition = initialPosition;
     }
+
     void Die()
     {
         DeathScreenManager deathScreenManager = FindObjectOfType<DeathScreenManager>();

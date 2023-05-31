@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 3158906994830461786}
   - component: {fileID: 1898644382}
   - component: {fileID: 3317394224898739187}
+  - component: {fileID: 3079554258509960821}
+  - component: {fileID: -3007466141724086716}
+  - component: {fileID: -2509557300939923483}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -101,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b300e70887df924eaed627b3a619cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   damage: 1
   leftLimit: -5
   rightLimit: 5
@@ -143,6 +146,59 @@ MonoBehaviour:
   leftLimit: -5
   rightLimit: 5
   detectionRange: 5
+--- !u!70 &3079554258509960821
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158906994830461787}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0569047, y: -0.04828257}
+  m_Size: {x: 0.455444, y: 0.7209975}
+  m_Direction: 0
+--- !u!50 &-3007466141724086716
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158906994830461787}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &-2509557300939923483
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158906994830461787}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.495
 --- !u!1 &6333751411603647934
 GameObject:
   m_ObjectHideFlags: 0
